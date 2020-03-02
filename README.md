@@ -21,7 +21,7 @@ wget https://git.io/rime-install
 Then install `gkovacs/rime-td-pinyin-flypy-extra` using plum:
 
 ```bash
-bash rime-install gkovacs/rime-td-pinyin-flypy-extra
+bash rime-install gkovacs/rime-double-jyutping gkovacs/rime-td-pinyin-flypy gkovacs/rime-double-jyutping-display gkovacs/rime-td-pinyin-flypy-display gkovacs/rime-td-pinyin-flypy-extra
 ```
 
 Finally edit `default.custom.yaml` and add `td_pinyin_flypy_extra` to the schema list:
