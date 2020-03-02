@@ -2,7 +2,7 @@
 
 ## About
 
-This is a layout for typing in Shuangpin (双拼) with the Flypy (小鹤双拼) layout. Will display pronunciations in Cantonese as you type in Mandarin. You can also start typing in Cantonese by entering `\``. Tones can be entered as follows:
+This is a layout for typing in Shuangpin (双拼) with the Flypy (小鹤双拼) layout. Will display pronunciations in Cantonese as you type in Mandarin. You can also start typing in Cantonese by entering \`. Tones can be entered as follows:
 
 * Tone 1: `;`
 * Tone 2: `/`

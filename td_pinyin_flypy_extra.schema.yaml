@@ -19,6 +19,7 @@ schema:
     - leimaau_jyutping_zhuyin_nospaces
     - leimaau_zhuyin_jyutping_nospaces
     - double_jyutping_display
+    - japanese
 
 switches:
   - name: ascii_mode
@@ -54,6 +55,7 @@ engine:
     - affix_segmentor@jyutping_lookup
     - affix_segmentor@putonghua_to_jyutping_lookup
     - affix_segmentor@jyutping_to_putonghua_lookup
+    - affix_segmentor@japanese_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -63,6 +65,7 @@ engine:
     - script_translator@jyutping_lookup
     - script_translator@putonghua_to_jyutping_lookup
     - script_translator@jyutping_to_putonghua_lookup
+    - script_translator@japanese_lookup
   filters:
     - simplifier@zh_simp
     - simplifier@zh_tw
@@ -70,6 +73,7 @@ engine:
     - reverse_lookup_filter@jyutping_reverse_lookup
     - reverse_lookup_filter@putonghua_to_jyutping_reverse_lookup
     - reverse_lookup_filter@jyutping_to_putonghua_reverse_lookup
+    - reverse_lookup_filter@japanese_reverse_lookup
 
 speller:
   alphabet: 'zyxwvutsrqponmlkjihgfedcba;,./'
@@ -736,6 +740,21 @@ jyutping_reverse_lookup:
   #  - xform/^/（粵拼：〔/
   #  - xform/$/〕）/
 
+japanese_lookup:
+  tag: japanese_lookup
+  prefix: "`N"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  suffix: "`"
+  dictionary: "japanese"
+  preedit_format:
+    - 'xlit|q|ー|'
+  tips: 【日】
+
+japanese_reverse_lookup:
+  tags: [ japanese_lookup ]
+  dictionary: "japanese"
+  comment_format:
+    - 'xlit|q|ー|'
+
 punctuator:
   import_preset: default
 
@@ -762,6 +781,7 @@ recognizer:
     jyutping_lookup: "`[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`Y[a-z;/,.]*`?$"
     jyutping_to_putonghua_lookup: "`J[a-z;/,.]*`?$"
+    japanese_lookup: "`N[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
