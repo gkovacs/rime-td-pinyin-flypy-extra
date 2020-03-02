@@ -20,6 +20,7 @@ schema:
     - leimaau_zhuyin_jyutping_nospaces
     - double_jyutping_display
     - japanese
+    - korean
 
 switches:
   - name: ascii_mode
@@ -56,6 +57,7 @@ engine:
     - affix_segmentor@putonghua_to_jyutping_lookup
     - affix_segmentor@jyutping_to_putonghua_lookup
     - affix_segmentor@japanese_lookup
+    - affix_segmentor@korean_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -66,6 +68,7 @@ engine:
     - script_translator@putonghua_to_jyutping_lookup
     - script_translator@jyutping_to_putonghua_lookup
     - script_translator@japanese_lookup
+    - script_translator@korean_lookup
   filters:
     - simplifier@zh_simp
     - simplifier@zh_tw
@@ -74,6 +77,7 @@ engine:
     - reverse_lookup_filter@putonghua_to_jyutping_reverse_lookup
     - reverse_lookup_filter@jyutping_to_putonghua_reverse_lookup
     - reverse_lookup_filter@japanese_reverse_lookup
+    - reverse_lookup_filter@korean_reverse_lookup
 
 speller:
   alphabet: 'zyxwvutsrqponmlkjihgfedcba;,./'
@@ -755,6 +759,24 @@ japanese_reverse_lookup:
   comment_format:
     - 'xlit|q|ー|'
 
+korean_lookup:
+  tag: korean_lookup
+  prefix: "`K"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  suffix: "`"
+  dictionary: "korean"
+  preedit_format:
+    - xform/'/ /
+    - xform/(^|[ '])([qx])/$1/
+    - xform/([qx])/ng/
+  tips: 【韓】
+
+korean_reverse_lookup:
+  tags: [ korean_lookup ]
+  dictionary: "korean"
+  comment_format:
+    - xform/(^|[ '])q/$1/
+    - xform/q/ng/
+
 punctuator:
   import_preset: default
 
@@ -782,6 +804,7 @@ recognizer:
     putonghua_to_jyutping_lookup: "`Y[a-z;/,.]*`?$"
     jyutping_to_putonghua_lookup: "`J[a-z;/,.]*`?$"
     japanese_lookup: "`N[a-z;/,.]*`?$"
+    korean_lookup: "`K[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
