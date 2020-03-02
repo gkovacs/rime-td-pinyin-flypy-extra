@@ -751,6 +751,7 @@ key_binder:
     - {accept: "Control+Shift+F", toggle: zh_simp, when: always}
     - {accept: "Control+Shift+t", toggle: zh_tw, when: always}
     - {accept: "Control+Shift+T", toggle: zh_tw, when: always}
+    - {accept: "F16", select: double_jyutping_extra, when: always}
 
 recognizer:
   import_preset: default
