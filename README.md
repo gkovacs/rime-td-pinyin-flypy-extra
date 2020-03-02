@@ -18,18 +18,18 @@ cd ~/Library/Rime
 wget https://git.io/rime-install
 ```
 
-Then install `gkovacs/rime-td-pinyin-flypy-display` using plum:
+Then install `gkovacs/rime-td-pinyin-flypy-extra` using plum:
 
 ```bash
-bash rime-install gkovacs/rime-td-pinyin-flypy-display
+bash rime-install gkovacs/rime-td-pinyin-flypy-extra
 ```
 
-Finally edit `default.custom.yaml` and add `td_pinyin_flypy_display` to the schema list:
+Finally edit `default.custom.yaml` and add `td_pinyin_flypy_extra` to the schema list:
 
 ```bash
 patch:
   schema_list:
-    - schema: td_pinyin_flypy_display
+    - schema: td_pinyin_flypy_extra
 ```
 
 Now reload RIME and it should appear under your layouts.
