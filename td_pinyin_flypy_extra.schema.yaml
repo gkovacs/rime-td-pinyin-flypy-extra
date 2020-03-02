@@ -49,15 +49,19 @@ engine:
     - ascii_segmentor
     - matcher
     - abc_segmentor
+    - affix_segmentor@putonghua_to_jyutping_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator
+    - reverse_lookup_translator
     - script_translator
+    - script_translator@putonghua_to_jyutping_lookup
   filters:
     - simplifier@zh_simp
     - simplifier@zh_tw
     - uniquifier
+    - reverse_lookup_filter@putonghua_to_jyutping_reverse_lookup
 
 speller:
   alphabet: 'zyxwvutsrqponmlkjihgfedcba;,./'
@@ -505,6 +509,7 @@ recognizer:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    putonghua_to_jyutping_lookup: "`Y[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
