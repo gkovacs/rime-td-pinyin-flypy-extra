@@ -672,7 +672,7 @@ jyutping_lookup:
     - xform/(^|[ '])(c|z|d|l|s)wT/$1$2eoT/
     - xform/(^|[ '])(h|t|z)w/$1$2oe/
     - xform/(^|[ '])(G|Q|g|k|p|f|b|m|w)w/$1$2ui/
-    - xform/(^|[ '])([wpGkfcbm])y/$1$2un/
+    - xform/(^|[ '])([wpGkfcbmg])y/$1$2un/
     - xform/(^|[ '])([sdtlghzcnj])t/$1$2yun/
     - xform/(^|[ '])([gkbpmhf])i($|[^PTK])/$1$2ei$3/
     - xform/(^|[ '])([wtGpsdfghjklzcbnm])p/$1$2ing/
