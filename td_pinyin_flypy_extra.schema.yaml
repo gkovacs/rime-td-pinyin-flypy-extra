@@ -23,6 +23,7 @@ schema:
     - korean
     - vietnamese
     - international
+    - stroke_zhuyin_jyutping
 
 switches:
   - name: ascii_mode
@@ -1068,12 +1069,27 @@ key_binder:
     - {accept: "F16", select: double_jyutping_extra, when: always}
     - {accept: "F19", select: international, when: always}
 
+reverse_lookup:
+  dictionary: stroke_zhuyin_jyutping
+  prism: stroke_zhuyin_jyutping
+  enable_completion: true
+  spelling_hints: 10
+  prefix: "`H"
+  suffix: "`"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format:
+    - xform/~//
+    - xform/^·//
+
 recognizer:
   import_preset: default
   patterns:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    reverse_lookup: "`H[a-z]*`?$"
     jyutping_lookup: "`[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
     jyutping_to_putonghua_lookup: "`J[a-z;/,.]*`?$"
