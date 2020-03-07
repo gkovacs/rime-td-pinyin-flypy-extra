@@ -294,7 +294,7 @@ abc_segmentor:
 
 putonghua_to_jyutping_lookup:
   tag: putonghua_to_jyutping_lookup
-  prefix: "`Y"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "`M"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   spelling_hints: 10
   dictionary: terra_pinyin.extended
