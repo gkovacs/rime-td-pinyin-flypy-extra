@@ -2,12 +2,19 @@
 
 ## About
 
-This is a layout for typing in Shuangpin (双拼) with the Flypy (小鹤双拼) layout. Will display pronunciations in Cantonese as you type in Mandarin. You can also start typing in Cantonese by entering \`. Tones can be entered as follows:
+This is a layout for typing in Shuangpin (双拼) with the Flypy (小鹤双拼) layout. Will display pronunciations in Cantonese as you type in Mandarin. You can also start typing in Cantonese via [Double Jyutping](https://github.com/gkovacs/rime-double-jyutping-extra/blob/master/README.md) by entering \` and it will display Mandarin pronunciations.
 
-* Tone 1: `;`
-* Tone 2: `/`
-* Tone 3: `,`
-* Tone 4: `.`
+## Flypy Double Pinyin with Optional Tones (小鹤双拼)
+
+![](images/double-flypy.png)
+
+This is identical to the standard Flypy Double Pinyin 小鹤双拼 and adds the ability to optionally add tones.
+
+All syllables in Standard Chinese (Mandarin / Putonghua / 普通话) can be entered unambiguously with 2 keystrokes.
+
+You can optionally enter a tone with 1 additional keystroke - 1 is `;`, 2 is `/`, 3 is `,`, 4 is `.`. For instance, 师 is `ui;` 时 is `ui/` 使 is `ui,` 是 is `ui.`
+
+You can type "\`" to temporarily switch to Cantonese lookup mode, if you don't know the Putonghua pronunciation for a word. In this mode you can enter words using the [Double Jyutping](https://github.com/gkovacs/rime-double-jyutping-extra/blob/master/README.md) method, and it will display the Pinyin next to the Chinese characters.
 
 ## Installing
 
