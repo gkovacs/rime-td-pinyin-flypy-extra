@@ -1032,6 +1032,8 @@ international_lookup:
   tag: international_lookup
   prefix: "`L"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
+  enable_user_dict: false
+  enable_sentence: true
   dictionary: "international"
   tips: 【罗】
 
