@@ -67,6 +67,7 @@ engine:
     - affix_segmentor@vietnamese_lookup
     - affix_segmentor@hannom_lookup
     - affix_segmentor@international_lookup
+    - affix_segmentor@stroke_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -82,6 +83,7 @@ engine:
     - script_translator@vietnamese_lookup
     - script_translator@hannom_lookup
     - script_translator@international_lookup
+    - table_translator@stroke_lookup
   filters:
     - simplifier@zh_simp
     - simplifier@zh_tw
@@ -95,6 +97,7 @@ engine:
     - reverse_lookup_filter@vietnamese_reverse_lookup
     - reverse_lookup_filter@hannom_reverse_lookup
     - reverse_lookup_filter@international_reverse_lookup
+    - reverse_lookup_filter@reverse_lookup
 
 speller:
   alphabet: 'zyxwvutsrqponmlkjihgfedcba;,./'
@@ -1343,19 +1346,25 @@ key_binder:
     - {accept: "F16", select: double_jyutping_extra, when: always}
     - {accept: "F19", select: international, when: always}
 
-reverse_lookup:
-  dictionary: stroke
-  prism: stroke
+stroke_lookup:
+  tag: "stroke_lookup"
+  dictionary: "stroke"
+  enable_user_dict: false
   enable_completion: true
   spelling_hints: 10
   prefix: "`H"
   suffix: "`"
-  tips: 〔筆畫〕
+  tips: 【笔】
   preedit_format:
     - xlit/hspnz/一丨丿丶乙/
   comment_format:
     - xform/~//
     - xform/^·//
+
+reverse_lookup:
+  tags: [ stroke_lookup ]
+  overwrite_comment: true
+  dictionary: "leimaau_jyutping_zhuyin_nospaces"
 
 recognizer:
   import_preset: default
@@ -1363,7 +1372,6 @@ recognizer:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
-    reverse_lookup: "`H[a-z]*`?$"
     jyutping_lookup: "`[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
     jyutping_to_putonghua_lookup: "`J[a-z;/,.]*`?$"
@@ -1373,6 +1381,7 @@ recognizer:
     vietnamese_lookup: "`V[a-zA-Z;/,.]*`?$"
     hannom_lookup: "`Z[a-zA-Z;/,.]*`?$"
     international_lookup: "`L[a-zA-Z;/,.]*`?$"
+    stroke_lookup: "`H[a-z]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
