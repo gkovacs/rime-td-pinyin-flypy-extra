@@ -26,6 +26,7 @@ schema:
     - vietnamese_hannom
     - international
     - stroke
+    - cangjie5_tradsimp
 
 switches:
   - name: ascii_mode
@@ -67,7 +68,9 @@ engine:
     - affix_segmentor@vietnamese_lookup
     - affix_segmentor@hannom_lookup
     - affix_segmentor@international_lookup
+    - affix_segmentor@putonghua_to_cangjie_lookup
     - affix_segmentor@stroke_lookup
+    - affix_segmentor@cangjie5_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -83,7 +86,9 @@ engine:
     - script_translator@vietnamese_lookup
     - script_translator@hannom_lookup
     - script_translator@international_lookup
+    - script_translator@putonghua_to_cangjie_lookup
     - table_translator@stroke_lookup
+    - table_translator@cangjie5_lookup
   filters:
     - simplifier@zh_simp
     - simplifier@zh_tw
@@ -97,6 +102,7 @@ engine:
     - reverse_lookup_filter@vietnamese_reverse_lookup
     - reverse_lookup_filter@hannom_reverse_lookup
     - reverse_lookup_filter@international_reverse_lookup
+    - reverse_lookup_filter@putonghua_to_cangjie_reverse_lookup
     - reverse_lookup_filter@reverse_lookup
 
 speller:
@@ -1351,6 +1357,9 @@ stroke_lookup:
   dictionary: "stroke"
   enable_user_dict: false
   enable_completion: true
+  enable_sentence: false
+  sentence_over_completion: false
+  max_phrase_length: 1
   spelling_hints: 10
   prefix: "`H"
   suffix: "`"
@@ -1361,9 +1370,242 @@ stroke_lookup:
     - xform/~//
     - xform/^·//
 
+putonghua_to_cangjie_lookup:
+  #dictionary: luna_pinyin
+  #prism: luna_quanpin
+  tag: putonghua_to_cangjie_lookup
+  spelling_hints: 10
+  dictionary: terra_pinyin_tradsimp #pinyin_simp # terra_pinyin_tradsimp
+  prism: td_pinyin_flypy
+  prefix: "`F"
+  suffix: "'"
+  tips: 〔拼音〕
+  preedit_format:
+    - xform/([bpmfdtnljqx])n/$1iao/
+    - xform/(\w)g/$1eng/
+    - xform/(\w)q/$1iu/
+    - xform/(\w)w/$1ei/
+    - xform/([dtnlgkhjqxyvuirzcs])r/$1uan/
+    - xform/(\w)t/$1ve/
+    - xform/(\w)y/$1un/
+    - xform/([dtnlgkhvuirzcs])o/$1uo/
+    - xform/(\w)p/$1ie/
+    - xform/([jqx])s/$1iong/
+    - xform/(\w)s/$1ong/
+    - xform/(\w)d/$1ai/
+    - xform/(\w)f/$1en/
+    - xform/(\w)h/$1ang/
+    - xform/(\w)j/$1an/
+    - xform/([gkhvuirzcs])k/$1uai/
+    - xform/(\w)k/$1ing/
+    - xform/([jqxnl])l/$1iang/
+    - xform/(\w)l/$1uang/
+    - xform/(\w)z/$1ou/
+    - xform/([gkhvuirzcs])x/$1ua/
+    - xform/(\w)x/$1ia/
+    - xform/(\w)c/$1ao/
+    - xform/([dtgkhvuirzcs])v/$1ui/
+    - xform/(\w)b/$1in/
+    - xform/(\w)m/$1ian/
+    - xform/([aoe])\1(\w)/$1$2/
+    - "xform/(^|[ '])v/$1zh/"
+    - "xform/(^|[ '])i/$1ch/"
+    - "xform/(^|[ '])u/$1sh/"
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+    - xform/eh/ê/
+    - 'xform ([aeiou])(ng?|r)([;/,\.]) $1$3$2'
+    - 'xform ([aeo])([iuo])([;/,\.]) $1$3$2'
+    - 'xform a; ā'
+    - 'xform a/ á'
+    - 'xform a, ǎ'
+    - 'xform a\. à'
+    - 'xform e; ē'
+    - 'xform e/ é'
+    - 'xform e, ě'
+    - 'xform e\. è'
+    - 'xform o; ō'
+    - 'xform o/ ó'
+    - 'xform o, ǒ'
+    - 'xform o\. ò'
+    - 'xform i; ī'
+    - 'xform i/ í'
+    - 'xform i, ǐ'
+    - 'xform i\. ì'
+    - 'xform u; ū'
+    - 'xform u/ ú'
+    - 'xform u, ǔ'
+    - 'xform u\. ù'
+    - 'xform ü; ǖ'
+    - 'xform ü/ ǘ'
+    - 'xform ü, ǚ'
+    - 'xform ü\. ǜ'
+  comment_format:
+    - xform zhi ㄓ
+    - xform chi ㄔ
+    - xform shi ㄕ
+    - xform ri ㄖ
+    - xform zi ㄗ
+    - xform ci ㄘ
+    - xform si ㄙ
+    - xform zh ㄓ
+    - xform ch ㄔ
+    - xform sh ㄕ
+    - xform er ㄦ
+    - xform ruan ㄖㄨㄢ
+    - xform rua ㄖㄨㄚ
+    - xform run ㄖㄨㄣ
+    - xform rong ㄖㄨㄥ
+    - xform rang ㄖㄤ
+    - xform reng ㄖㄥ
+    - xform ruo ㄖㄨㄛ
+    - xform rui ㄖㄨㄟ
+    - xform ran ㄖㄢ
+    - xform ren ㄖㄣ
+    - xform rou ㄖㄡ
+    - xform rao ㄖㄠ
+    - xform ru ㄖㄨ
+    - xform re ㄖㄜ
+    - xform ying ㄧㄥ
+    - xform wang ㄨㄤ
+    - xform uang ㄨㄤ
+    - xform yang ㄧㄤ
+    - xform iang ㄧㄤ
+    - xform yong ㄩㄥ
+    - xform iong ㄩㄥ
+    - xform weng ㄨㄥ
+    - xform wo ㄨㄛ
+    - xform yun ㄩㄣ
+    - xform yue ㄩㄝ
+    - xform yuan ㄩㄢ
+    - xform you ㄧㄡ
+    - xform ye ㄧㄝ
+    - xform yao ㄧㄠ
+    - xform yin ㄧㄣ
+    - xform yan ㄧㄢ
+    - xform wan ㄨㄢ
+    - xform wai ㄨㄞ
+    - xform wei ㄨㄟ
+    - xform wen ㄨㄣ
+    - xform wa ㄨㄚ
+    - xform wu ㄨ
+    - xform yi ㄧ
+    - xform yu ㄩ
+    - xform un ㄨㄣ
+    - xform ui ㄨㄟ
+    - xform ju ㄐㄩ
+    - xform xu ㄒㄩ
+    - xform qu ㄑㄩ
+    - xform ve ㄩㄝ
+    - xform ing ㄧㄥ
+    - xform ong ㄨㄥ
+    - xform ang ㄤ
+    - xform eng ㄥ
+    - xform ai ㄞ
+    - xform ei ㄟ
+    - xform ao ㄠ
+    - xform ou ㄡ
+    - xform ian ㄧㄢ
+    - xform ya ㄧㄚ
+    - xform in ㄧㄣ
+    - xform an ㄢ
+    - xform en ㄣ
+    - xform r ㄦ
+    - xform v ㄩ
+    - xform b ㄅ
+    - xform p ㄆ
+    - xform m ㄇ
+    - xform f ㄈ
+    - xform d ㄉ
+    - xform t ㄊ
+    - xform n ㄋ
+    - xform l ㄌ
+    - xform g ㄍ
+    - xform k ㄎ
+    - xform h ㄏ
+    - xform j ㄐ
+    - xform q ㄑ
+    - xform x ㄒ
+    - xform z ㄗ
+    - xform c ㄘ
+    - xform s ㄙ
+    - xform u ㄨ
+    - xform e ㄜ
+    - xform o ㄛ
+    - xform a ㄚ
+    - xform i ㄧ
+    - xform/1//
+    - xform 2 ˊ
+    - xform 3 ˇ
+    - xform 4 ˋ
+    - xform 5 ˙
+    - xform/ //
+  # comment_format:
+  #   - xform ([aeiou])(ng?|r)([1234]) $1$3$2
+  #   - xform ([aeo])([iuo])([1234]) $1$3$2
+  #   - xform a1 ā
+  #   - xform a2 á
+  #   - xform a3 ǎ
+  #   - xform a4 à
+  #   - xform e1 ē
+  #   - xform e2 é
+  #   - xform e3 ě
+  #   - xform e4 è
+  #   - xform o1 ō
+  #   - xform o2 ó
+  #   - xform o3 ǒ
+  #   - xform o4 ò
+  #   - xform i1 ī
+  #   - xform i2 í
+  #   - xform i3 ǐ
+  #   - xform i4 ì
+  #   - xform u1 ū
+  #   - xform u2 ú
+  #   - xform u3 ǔ
+  #   - xform u4 ù
+  #   - xform v1 ǖ
+  #   - xform v2 ǘ
+  #   - xform v3 ǚ
+  #   - xform v4 ǜ
+  #   - xform/([nljqxy])v/$1ü/
+  #   - xform/eh[0-5]?/ê/
+  #   - xform/([a-z]+)[0-5]/$1/
+  tips: 【普查仓】
+  #closing_tips: 【粵拼】
+
+putonghua_to_cangjie_reverse_lookup:
+  tags: [ putonghua_to_cangjie_lookup ]
+  #dictionary: leimaau_jyutping_zhuyin_nospaces
+  dictionary: cangjie5_tradsimp
+  spelling_hints: 10
+  overwrite_comment: true  # 覆蓋其他提示
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+
+cangjie5_lookup:    # 倉頡五代反查
+  tag: "cangjie5_lookup"
+  dictionary: "cangjie5_tradsimp"
+  enable_user_dict: false
+  enable_completion: true
+  enable_sentence: false
+  sentence_over_completion: false
+  max_phrase_length: 1
+  prefix: "`C"
+  suffix: "`"
+  tips: 【仓】
+  preedit_format:
+    - 'xform/^([a-z]*)$/$1\t（\U$1\E）/'
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+    - "^yyy.*$"
+
 reverse_lookup:
-  tags: [ stroke_lookup ]
-  overwrite_comment: true
+  tags: [ stroke_lookup, cangjie5_lookup ]
+  #overwrite_comment: true
   dictionary: "leimaau_jyutping_zhuyin_nospaces"
 
 recognizer:
@@ -1382,6 +1624,8 @@ recognizer:
     hannom_lookup: "`Z[a-zA-Z;/,.]*`?$"
     international_lookup: "`L[a-zA-Z;/,.]*`?$"
     stroke_lookup: "`H[a-z]*`?$"
+    cangjie5_lookup: "`C[a-z]*`?$"
+    putonghua_to_cangjie_lookup: "`F[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:

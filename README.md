@@ -41,8 +41,8 @@ patch:
 
 Now reload RIME and it should appear under your layouts.
 
-You can also lookup in other languages by pressing "`N" (Japanese) "`K" (Korean) "`V" (Vietnamese) "`H" (Stroke) but you will have to install the following packages:
+You can also lookup in other languages by pressing "`N" (Japanese) "`K" (Korean) "`V" (Vietnamese) "`H" (Stroke) "`C" (Cangjie) but you will have to install the following packages:
 
 ```bash
-bash rime-install stroke gkovacs/rime-japanese gkovacs/rime-korean gkovacs/rime-vietnamese
+bash rime-install stroke gkovacs/rime-japanese gkovacs/rime-korean gkovacs/rime-vietnamese gkovacs/rime-cangjie-tradsimp
 ```
