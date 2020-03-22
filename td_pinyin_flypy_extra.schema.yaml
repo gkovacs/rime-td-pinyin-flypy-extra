@@ -18,6 +18,7 @@ schema:
     - leimaau_jyutping
     - leimaau_jyutping_zhuyin_nospaces
     - leimaau_zhuyin_jyutping_nospaces
+    - jyutping_tradsimp
     - double_jyutping_display
     - japanese
     - korean
@@ -61,7 +62,7 @@ engine:
     - abc_segmentor
     - affix_segmentor@jyutping_lookup
     - affix_segmentor@putonghua_to_jyutping_lookup
-    - affix_segmentor@jyutping_to_putonghua_lookup
+    - affix_segmentor@jyutping_to_cangjie_lookup
     - affix_segmentor@japanese_lookup
     - affix_segmentor@korean_lookup
     - affix_segmentor@hanja_lookup
@@ -79,7 +80,7 @@ engine:
     - script_translator
     - script_translator@jyutping_lookup
     - script_translator@putonghua_to_jyutping_lookup
-    - script_translator@jyutping_to_putonghua_lookup
+    - script_translator@jyutping_to_cangjie_lookup
     - script_translator@japanese_lookup
     - script_translator@korean_lookup
     - script_translator@hanja_lookup
@@ -95,7 +96,7 @@ engine:
     - uniquifier
     - reverse_lookup_filter@jyutping_reverse_lookup
     - reverse_lookup_filter@putonghua_to_jyutping_reverse_lookup
-    - reverse_lookup_filter@jyutping_to_putonghua_reverse_lookup
+    - reverse_lookup_filter@jyutping_to_cangjie_reverse_lookup
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@korean_reverse_lookup
     - reverse_lookup_filter@hanja_reverse_lookup
@@ -529,12 +530,12 @@ putonghua_to_jyutping_reverse_lookup:
   #  - xform/^/（粵拼：〔/
   #  - xform/$/〕）/
 
-jyutping_to_putonghua_lookup:
-  tag: jyutping_to_putonghua_lookup
+jyutping_to_cangjie_lookup:
+  tag: jyutping_to_cangjie_lookup
   spelling_hints: 10
   prefix: "`J"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
-  dictionary: leimaau_jyutping
+  dictionary: jyutping_tradsimp
   prism: double_jyutping_display
   preedit_format:
     - xform/(^|[ '])u/$1G/
@@ -639,16 +640,14 @@ jyutping_to_putonghua_lookup:
   tips: 【粵查普】
   #closing_tips: 【粵拼】
 
-jyutping_to_putonghua_reverse_lookup:
-  tags: [ jyutping_to_putonghua_lookup ]
-  #spelling_hints: 10
+jyutping_to_cangjie_reverse_lookup:
+  tags: [ jyutping_to_cangjie_lookup ]
   #dictionary: terra_pinyin_nospaces.extended
-  dictionary: leimaau_zhuyin_jyutping_nospaces
+  dictionary: cangjie5_tradsimp
+  spelling_hints: 10
   overwrite_comment: true  # 覆蓋其他提示
-  #comment_format:
-  #  - xform/ /\｜/
-  #  - xform/^/（粵拼：〔/
-  #  - xform/$/〕）/
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重|"
 
 jyutping_lookup:
   tag: jyutping_lookup
@@ -1617,7 +1616,7 @@ recognizer:
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
     jyutping_lookup: "`[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
-    jyutping_to_putonghua_lookup: "`J[a-z;/,.]*`?$"
+    jyutping_to_cangjie_lookup: "`J[a-z;/,.]*`?$"
     japanese_lookup: "`N[a-z;/,.]*`?$"
     korean_lookup: "`K[a-z;/,.]*`?$"
     hanja_lookup: "`U[a-z;/,.]*`?$"
