@@ -317,7 +317,7 @@ translator:
   disable_user_dict_for_patterns:
     - "^oj.*$"
     - "^oy.*$"
-    - "^op.*$"
+    - "^on.*$"
     - "^ok.*$"
     - "^ov.*$"
     - "^oi.*$"
@@ -781,7 +781,7 @@ jyutping_reverse_lookup:
 
 japanese_lookup:
   tag: japanese_lookup
-  prefix: "op"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "on"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: "japanese"
   preedit_format:
@@ -1627,7 +1627,7 @@ recognizer:
     jyutping_lookup: "^oj[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
     jyutping_to_cangjie_lookup: "^oy[a-z;/,.]*`?$"
-    japanese_lookup: "^op[a-z;/,.]*`?$"
+    japanese_lookup: "^on[a-z;/,.]*`?$"
     korean_lookup: "^ok[a-z;/,.]*`?$"
     hanja_lookup: "`U[a-z;/,.]*`?$"
     vietnamese_lookup: "^ov[a-zA-Z;/,.]*`?$"
