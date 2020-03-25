@@ -314,6 +314,16 @@ translator:
     - xform 4 ˋ
     - xform 5 ˙
     - xform/ //
+  disable_user_dict_for_patterns:
+    - "^oj.*$"
+    - "^oy.*$"
+    - "^op.*$"
+    - "^ok.*$"
+    - "^ov.*$"
+    - "^oi.*$"
+    - "^os.*$"
+    - "^od.*$"
+    - "^of.*$"
 
 abc_segmentor:
   extra_tags:
@@ -533,7 +543,7 @@ putonghua_to_jyutping_reverse_lookup:
 jyutping_to_cangjie_lookup:
   tag: jyutping_to_cangjie_lookup
   spelling_hints: 10
-  prefix: "`J"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "oy"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: jyutping_tradsimp
   prism: double_jyutping_display
@@ -652,7 +662,7 @@ jyutping_to_cangjie_reverse_lookup:
 jyutping_lookup:
   tag: jyutping_lookup
   spelling_hints: 10
-  prefix: "`"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "oj"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: leimaau_jyutping
   prism: double_jyutping_display
@@ -771,7 +781,7 @@ jyutping_reverse_lookup:
 
 japanese_lookup:
   tag: japanese_lookup
-  prefix: "`N"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "op"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: "japanese"
   preedit_format:
@@ -786,7 +796,7 @@ japanese_reverse_lookup:
 
 korean_lookup:
   tag: korean_lookup
-  prefix: "`K"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "ok"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: "korean"
   preedit_format:
@@ -824,7 +834,7 @@ hanja_reverse_lookup:
 
 vietnamese_lookup:
   tag: vietnamese_lookup
-  prefix: "`V"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "ov"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   dictionary: "vietnamese"
   spelling_hints: 10
@@ -1310,7 +1320,7 @@ hannom_reverse_lookup:
 
 international_lookup:
   tag: international_lookup
-  prefix: "`L"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  prefix: "oi"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
   enable_user_dict: false
   enable_sentence: true
@@ -1360,7 +1370,7 @@ stroke_lookup:
   sentence_over_completion: false
   max_phrase_length: 1
   spelling_hints: 10
-  prefix: "`H"
+  prefix: "os"
   suffix: "`"
   tips: 【笔】
   preedit_format:
@@ -1376,7 +1386,7 @@ putonghua_to_cangjie_lookup:
   spelling_hints: 10
   dictionary: terra_pinyin_tradsimp #pinyin_simp # terra_pinyin_tradsimp
   prism: td_pinyin_flypy
-  prefix: "`F"
+  prefix: "of"
   suffix: "'"
   tips: 〔拼音〕
   preedit_format:
@@ -1591,7 +1601,7 @@ cangjie5_lookup:    # 倉頡五代反查
   enable_sentence: false
   sentence_over_completion: false
   max_phrase_length: 1
-  prefix: "`C"
+  prefix: "od"
   suffix: "`"
   tips: 【仓】
   preedit_format:
@@ -1614,18 +1624,18 @@ recognizer:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
-    jyutping_lookup: "`[a-z;/,.]*`?$"
+    jyutping_lookup: "^oj[a-z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
-    jyutping_to_cangjie_lookup: "`J[a-z;/,.]*`?$"
-    japanese_lookup: "`N[a-z;/,.]*`?$"
-    korean_lookup: "`K[a-z;/,.]*`?$"
+    jyutping_to_cangjie_lookup: "^oy[a-z;/,.]*`?$"
+    japanese_lookup: "^op[a-z;/,.]*`?$"
+    korean_lookup: "^ok[a-z;/,.]*`?$"
     hanja_lookup: "`U[a-z;/,.]*`?$"
-    vietnamese_lookup: "`V[a-zA-Z;/,.]*`?$"
+    vietnamese_lookup: "^ov[a-zA-Z;/,.]*`?$"
     hannom_lookup: "`Z[a-zA-Z;/,.]*`?$"
-    international_lookup: "`L[a-zA-Z;/,.]*`?$"
-    stroke_lookup: "`H[a-z]*`?$"
-    cangjie5_lookup: "`C[a-z]*`?$"
-    putonghua_to_cangjie_lookup: "`F[a-z;/,.]*`?$"
+    international_lookup: "^oi[a-zA-Z;/,.]*`?$"
+    stroke_lookup: "^os[a-z]*`?$"
+    cangjie5_lookup: "^od[a-z]*`?$"
+    putonghua_to_cangjie_lookup: "^of[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
