@@ -657,7 +657,7 @@ jyutping_to_cangjie_lookup:
     # - 'xform ([aeioumngptkqrwy])v $1⁵'
     #- 'xform r aa'
     #- 'xform q ng'
-  tips: 【粵查普】
+  tips: 【粵查仓】
   #closing_tips: 【粵拼】
 
 jyutping_to_cangjie_reverse_lookup:
@@ -1611,14 +1611,13 @@ cangjie5_lookup:    # 倉頡五代反查
   enable_sentence: false
   sentence_over_completion: false
   max_phrase_length: 1
-  prefix: "od"
+  #prefix: "od"
   suffix: "`"
   tips: 【仓】
   preedit_format:
-    - 'xform/^([a-z]*)$/$1\t（\U$1\E）/'
-    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重|"
   comment_format:
-    - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重～|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重～|"
   disable_user_dict_for_patterns:
     - "^z.*$"
     - "^yyy.*$"
@@ -1644,7 +1643,9 @@ recognizer:
     hannom_lookup: "`Z[a-zA-Z;/,.]*`?$"
     international_lookup: "^oi[a-zA-Z;/,.]*`?$"
     stroke_lookup: "^os[a-z]*`?$"
-    cangjie5_lookup: "^od[a-z]*`?$"
+    #cangjie5_lookup: "^od[a-z]*`?$"
+    cangjie5_lookup: "^[A-Z][a-z]*`?$"
+    #cangjie5_cap_lookup: "^[A-Z][abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*`?$"
     putonghua_to_cangjie_lookup: "^of[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
