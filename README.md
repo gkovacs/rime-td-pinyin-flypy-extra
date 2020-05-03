@@ -41,7 +41,13 @@ patch:
 
 Now reload RIME and it should appear under your layouts.
 
-You can also lookup in other languages by pressing "op" (Japanese) "ok" (Korean) "ov" (Vietnamese) "os" (Stroke) "od" (Cangjie) "oi" (European languages) but you will have to install the following packages:
+You can also lookup via Cangjie by entering the first letter as capital (e.g. 明 = 日月 = Ab), but you will have to install the following package:
+
+```bash
+bash rime-install gkovacs/rime-cangjie-tradsimp
+```
+
+You can also lookup in other languages by pressing "op" (Japanese) "ok" (Korean) "ov" (Vietnamese) "os" (Stroke) "oi" (European languages) but you will have to install the following packages:
 
 ```bash
 bash rime-install stroke gkovacs/rime-japanese gkovacs/rime-korean gkovacs/rime-vietnamese gkovacs/rime-cangjie-tradsimp gkovacs/rime-international

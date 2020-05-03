@@ -674,9 +674,10 @@ jyutping_lookup:
   spelling_hints: 10
   prefix: "oj"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
   suffix: "`"
-  dictionary: leimaau_jyutping
-  prism: double_jyutping_display
+  dictionary: leimaau_jyutping.cangjie5
+  prism: double_jyutping_cangjie5
   preedit_format:
+    - 'xlit ABCDEFGHIJKLMNOPQRSTUVWXYZ 日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重'
     - xform/(^|[ '])u/$1G/
     - xform/(^|[ '])y/$1Q/
     - xform/(^|[ '])aa/$1Ñ/ # aa => ng
@@ -776,6 +777,9 @@ jyutping_lookup:
     # - 'xform ([aeioumngptkqrwy])v $1⁵'
     #- 'xform r aa'
     #- 'xform q ng'
+  comment_format:
+    - 'xlit ABCDEFGHIJKLMNOPQRSTUVWXYZ 日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜重'
+    - xform/ //
   tips: 【粵】
   #closing_tips: 【粵拼】
 
@@ -1633,7 +1637,7 @@ recognizer:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     #uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
-    jyutping_lookup: "^oj[a-z;/,.]*`?$"
+    jyutping_lookup: "^oj[a-zA-Z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "`M[a-z;/,.]*`?$"
     jyutping_to_cangjie_lookup: "^oy[a-z;/,.]*`?$"
     japanese_lookup: "^on[a-z;/,.]*`?$"
