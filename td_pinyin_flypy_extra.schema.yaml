@@ -20,6 +20,7 @@ schema:
     - leimaau_jyutping_zhuyin_nospaces
     - leimaau_zhuyin_jyutping_nospaces
     - jyutping_tradsimp
+    - terra_pinyin_tradsimp
     - double_jyutping_display
     - japanese
     - korean

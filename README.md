@@ -28,7 +28,7 @@ wget https://git.io/rime-install
 Then install `gkovacs/rime-td-pinyin-flypy-extra` using plum:
 
 ```bash
-bash rime-install gkovacs/rime-double-jyutping gkovacs/rime-td-pinyin-flypy gkovacs/rime-double-jyutping-display gkovacs/rime-td-pinyin-flypy-display gkovacs/rime-td-pinyin-flypy-extra
+bash rime-install gkovacs/rime-double-jyutping gkovacs/rime-td-pinyin-flypy gkovacs/rime-double-jyutping-display gkovacs/rime-td-pinyin-flypy-display gkovacs/rime-terra-pinyin-tradsimp gkovacs/rime-jyutping-tradsimp gkovacs/rime-cangjie-tradsimp gkovacs/rime-td-pinyin-flypy-extra
 ```
 
 Finally edit `default.custom.yaml` and add `td_pinyin_flypy_extra` to the schema list:
@@ -41,11 +41,7 @@ patch:
 
 Now reload RIME and it should appear under your layouts.
 
-You can also lookup via Cangjie by entering the first letter as capital (e.g. 明 = 日月 = Ab), but you will have to install the following package:
-
-```bash
-bash rime-install gkovacs/rime-cangjie-tradsimp
-```
+You can also lookup via Cangjie by entering the first letter as capital (e.g. 明 = 日月 = Ab).
 
 You can also lookup in other languages by pressing "op" (Japanese) "ok" (Korean) "ov" (Vietnamese) "os" (Stroke) "oi" (European languages) but you will have to install the following packages:
 
