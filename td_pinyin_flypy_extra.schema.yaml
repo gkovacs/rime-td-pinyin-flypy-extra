@@ -13,6 +13,7 @@ schema:
     地球拼音＋小鶴雙拼方案。
   dependencies:
     - td_pinyin_flypy
+    - td_pinyin_flypy_display
     - terra_pinyin.extended
     - terra_pinyin.extended.cangjie5
     - double_jyutping
@@ -21,6 +22,7 @@ schema:
     - leimaau_zhuyin_jyutping_nospaces
     - jyutping_tradsimp
     - terra_pinyin_tradsimp
+    - cangjie5_tradsimp
     - double_jyutping_display
     - japanese
     - korean
@@ -29,7 +31,6 @@ schema:
     - vietnamese_hannom
     - international
     - stroke
-    - cangjie5_tradsimp
 
 switches:
   - name: ascii_mode
@@ -326,6 +327,7 @@ translator:
   disable_user_dict_for_patterns:
     - "^oj.*$"
     - "^oy.*$"
+    - "^of.*$"
     - "^op.*$"
     - "^on.*$"
     - "^ok.*$"
@@ -335,7 +337,6 @@ translator:
     - "^oi.*$"
     - "^os.*$"
     - "^od.*$"
-    - "^of.*$"
 
 abc_segmentor:
   extra_tags:
@@ -1402,11 +1403,10 @@ putonghua_to_cangjie_lookup:
   #prism: luna_quanpin
   tag: putonghua_to_cangjie_lookup
   spelling_hints: 10
-  dictionary: terra_pinyin_tradsimp #pinyin_simp # terra_pinyin_tradsimp
-  prism: td_pinyin_flypy
+  dictionary: terra_pinyin_tradsimp
+  prism: td_pinyin_flypy_display
   prefix: "of"
-  suffix: "'"
-  tips: 〔拼音〕
+  suffix: "`"
   preedit_format:
     - xform/([bpmfdtnljqx])n/$1iao/
     - xform/(\w)g/$1eng/
@@ -1644,6 +1644,7 @@ recognizer:
     jyutping_lookup: "^oj[a-zA-Z;/,.]*`?$"
     putonghua_to_jyutping_lookup: "^op[a-z;/,.]*`?$"
     jyutping_to_cangjie_lookup: "^oy[a-z;/,.]*`?$"
+    putonghua_to_cangjie_lookup: "^of[a-z;/,.]*`?$"
     japanese_lookup: "^on[a-z;/,.]*`?$"
     korean_lookup: "^ok[a-z;/,.]*`?$"
     hanja_lookup: "^oh[a-z;/,.]*`?$"
@@ -1654,7 +1655,6 @@ recognizer:
     #cangjie5_lookup: "^od[a-z]*`?$"
     cangjie5_lookup: "^[A-Z][a-z]*`?$"
     #cangjie5_cap_lookup: "^[A-Z][abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*`?$"
-    putonghua_to_cangjie_lookup: "^of[a-z;/,.]*`?$"
     punct: ^/[0-9]?[a-z]*$
 
 zh_simp:
