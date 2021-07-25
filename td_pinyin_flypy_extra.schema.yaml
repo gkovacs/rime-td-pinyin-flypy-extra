@@ -29,7 +29,7 @@ schema:
     - korean_hanja
     - vietnamese
     - vietnamese_hannom
-    - international
+    - spanish
     - stroke
 
 switches:
@@ -1343,12 +1343,12 @@ international_lookup:
   suffix: "`"
   enable_user_dict: false
   enable_sentence: true
-  dictionary: "international"
+  dictionary: "spanish"
   tips: 【罗】
 
 international_reverse_lookup:
   tags: [ international_lookup ]
-  dictionary: "international"
+  dictionary: "spanish"
 
 punctuator:
   import_preset: default
@@ -1375,10 +1375,10 @@ key_binder:
     - {accept: "Control+Shift+J", select: double_jyutping_extra, when: always}
     - {accept: "Control+Shift+m", select: td_pinyin_flypy_extra, when: always}
     - {accept: "Control+Shift+M", select: td_pinyin_flypy_extra, when: always}
-    - {accept: "Control+Shift+l", select: international, when: always}
-    - {accept: "Control+Shift+L", select: international, when: always}
+    - {accept: "Control+Shift+l", select: spanish, when: always}
+    - {accept: "Control+Shift+L", select: spanish, when: always}
     - {accept: "F16", select: double_jyutping_extra, when: always}
-    - {accept: "F19", select: international, when: always}
+    - {accept: "F19", select: spanish, when: always}
 
 stroke_lookup:
   tag: "stroke_lookup"

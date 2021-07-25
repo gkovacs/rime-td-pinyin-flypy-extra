@@ -46,5 +46,5 @@ You can also lookup via Cangjie by entering the first letter as capital (e.g. æ˜
 You can also lookup in other languages by pressing "op" (Japanese) "ok" (Korean) "ov" (Vietnamese) "os" (Stroke) "oi" (European languages) but you will have to install the following packages:
 
 ```bash
-bash rime-install stroke gkovacs/rime-japanese gkovacs/rime-korean gkovacs/rime-vietnamese gkovacs/rime-cangjie-tradsimp gkovacs/rime-international
+bash rime-install stroke gkovacs/rime-japanese gkovacs/rime-korean gkovacs/rime-vietnamese gkovacs/rime-cangjie-tradsimp gkovacs/rime-spanish
 ```
